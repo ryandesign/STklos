@@ -92,25 +92,6 @@ DLLIBS=""
 
 eval `env CC=$CC LD=$LD /bin/sh ./utils/shlib-options`
 
-case $OS_NAME_VERSION in
-  SUNOS*)
-    CFLAGS="$CFLAGS -DSOLARIS";
-    LIBS="$LIBS -lsocket -lrt -lnsl -lpthread"
-    ;;
-  DARWIN_10)
-     GCINC="GCINC -D_XOPEN_SOURCE"
-     EXTRA_COMP_FLAGS="-I/opt/local/include"
-     ;;
-  UNKNOWN*)
-    echo ""
-    echo "**** STklos has no support for your system (`uname -s`)"
-    echo "**** Please modify the script \"utils/shlib-options\" to add"
-    echo "**** support for your system (it's easy) and restart installation process."
-    echo "**** Thanks for sending your modifications to <bugs _at_ stklos.net>"
-    exit 1
-    ;;
-esac
-
 
 ### Initilize the extra conf file in src
 SCMDIR=$prefix/share/$PACKAGE/$VERSION
